@@ -14,6 +14,8 @@ from allennlp.data.tokenizers.sentence_splitter import SpacySentenceSplitter
 from allennlp.data.instance import Instance
 from allennlp.data.fields import LabelField, TextField, Field
 
+from typing import Optional, Union
+
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
 
@@ -135,7 +137,7 @@ class TextClassificationJsonReaderWithSampling(TextClassificationJsonReader):
                     yield instance
 
     @overrides
-    def text_to_instance(self, text: str, label: str = None) -> Instance:  # type: ignore
+    def text_to_instance(self, text: str, label: Optional[Union[str, int]] = None) -> Instance:  # type: ignore
         """
         Parameters
         ----------
